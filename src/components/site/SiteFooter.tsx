@@ -6,7 +6,7 @@ import { EMAIL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "./contact-info";
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-[var(--color-ink)]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:px-8 lg:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <Logo height={32} />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">

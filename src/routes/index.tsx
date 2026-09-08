@@ -99,7 +99,7 @@ function Home() {
   return (
     <>
       <section className="glow-grid relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 pt-20 pb-24 sm:px-6 lg:pt-28 lg:pb-32">
+        <div className="mx-auto max-w-7xl px-4 pt-20 pb-24 sm:px-6 lg:px-8 lg:pt-28 lg:pb-32">
           <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
               <Reveal>
@@ -217,7 +217,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <Reveal>
           <h2 className="max-w-2xl text-3xl font-bold text-balance sm:text-4xl">
             Everything you need to turn attention into revenue
@@ -247,7 +247,7 @@ function Home() {
       </section>
 
       <section className="border-y border-border bg-[var(--color-ink)]">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <Reveal>
             <h2 className="text-3xl font-bold sm:text-4xl">How we work</h2>
           </Reveal>
@@ -265,7 +265,7 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <Reveal>
           <h2 className="text-3xl font-bold sm:text-4xl">What clients say</h2>
           <p className="mt-2 text-sm text-muted-foreground">

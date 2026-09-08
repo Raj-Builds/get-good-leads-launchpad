@@ -98,7 +98,7 @@ function Services() {
         happy to call.
       </PageHero>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid gap-5 lg:grid-cols-2">
           {detail.map((d, i) => (
             <Reveal key={d.title} delay={i * 80}>
@@ -120,7 +120,7 @@ function Services() {
       </section>
 
       <section className="border-y border-border bg-[var(--color-ink)]">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <Reveal>
             <h2 className="text-3xl font-bold sm:text-4xl">Ways to work together</h2>
             <p className="mt-2 text-sm text-muted-foreground">

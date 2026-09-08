@@ -69,7 +69,7 @@ function Results() {
         reporting format and approach. They are not records of actual client campaigns.
       </PageHero>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <Reveal>
           <p
             role="note"
@@ -118,7 +118,7 @@ function Results() {
       </section>
 
       <section className="border-y border-border bg-[var(--color-ink)]">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <Reveal>
             <h2 className="flex items-center gap-3 text-3xl font-bold sm:text-4xl">
               <TrendingUp className="size-7 text-primary" aria-hidden="true" />

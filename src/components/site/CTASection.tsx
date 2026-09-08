@@ -11,7 +11,7 @@ export function CTASection({
   body?: string;
 }) {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+    <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       <Reveal className="card-surface relative overflow-hidden rounded-3xl px-6 py-14 text-center sm:px-12">
         <div
           aria-hidden="true"

@@ -63,7 +63,7 @@ function About() {
         the phone stayed silent. We exist to change that number.
       </PageHero>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-2">
           <Reveal>
             <h2 className="text-3xl font-bold sm:text-4xl">Our story</h2>
@@ -103,7 +103,7 @@ function About() {
       </section>
 
       <section className="border-y border-border bg-[var(--color-ink)]">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <Reveal>
             <h2 className="text-3xl font-bold sm:text-4xl">How the team is built</h2>
           </Reveal>

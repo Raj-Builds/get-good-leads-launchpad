@@ -12,7 +12,7 @@ export function PageHero({
 }) {
   return (
     <section className="glow-grid border-b border-border">
-      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:py-28">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
         <Reveal>
           <p className="text-xs font-semibold tracking-[0.25em] text-primary uppercase">{eyebrow}</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-bold text-balance sm:text-5xl lg:text-6xl">

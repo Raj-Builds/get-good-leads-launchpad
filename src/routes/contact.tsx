@@ -36,7 +36,7 @@ function Contact() {
         day — usually much sooner.
       </PageHero>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6">
+      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.85fr]">
           <Reveal>
             <form
