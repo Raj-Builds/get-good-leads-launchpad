@@ -102,7 +102,7 @@ function Services() {
         <div className="grid gap-5 lg:grid-cols-2">
           {detail.map((d, i) => (
             <Reveal key={d.title} delay={i * 80}>
-              <article className="card-surface h-full rounded-3xl p-8">
+              <article className="card-surface card-hover group h-full rounded-3xl p-8">
                 <h2 className="text-2xl font-bold">{d.title}</h2>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{d.lead}</p>
                 <ul className="mt-6 space-y-3">

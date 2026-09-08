@@ -109,7 +109,7 @@ function Contact() {
             <div className="space-y-4">
               <a
                 href={`tel:${PHONE_TEL}`}
-                className="card-surface flex items-center gap-4 rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1"
+                className="card-surface card-hover group flex items-center gap-4 rounded-2xl p-6"
               >
                 <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
                   <Phone className="size-5" aria-hidden="true" />
@@ -124,7 +124,7 @@ function Contact() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="card-surface flex items-center gap-4 rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1"
+                className="card-surface card-hover group flex items-center gap-4 rounded-2xl p-6"
               >
                 <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
                   <MessageCircle className="size-5" aria-hidden="true" />
@@ -139,7 +139,7 @@ function Contact() {
 
               <a
                 href={`mailto:${EMAIL}`}
-                className="card-surface flex items-center gap-4 rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1"
+                className="card-surface card-hover group flex items-center gap-4 rounded-2xl p-6"
               >
                 <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/15 text-primary">
                   <Mail className="size-5" aria-hidden="true" />
@@ -150,7 +150,7 @@ function Contact() {
                 </span>
               </a>
 
-              <div className="rounded-2xl border border-border p-6">
+              <div className="card-hover rounded-2xl border border-border p-6">
                 <p className="flex items-center gap-3 text-sm">
                   <Clock className="size-4 shrink-0 text-primary" aria-hidden="true" />
                   Mon–Sat, 10:00 – 19:00 IST
