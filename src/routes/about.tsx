@@ -89,7 +89,7 @@ function About() {
           <Reveal delay={120}>
             <ul className="grid gap-5 sm:grid-cols-2">
               {values.map((v) => (
-                <li key={v.t} className="card-surface rounded-2xl p-6">
+                <li key={v.t} className="card-surface card-hover group rounded-2xl p-6">
                   <span className="inline-flex size-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
                     <v.icon className="size-5" aria-hidden="true" />
                   </span>
@@ -110,7 +110,7 @@ function About() {
           <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {team.map((t, i) => (
               <Reveal as="li" key={t.n} delay={i * 80}>
-                <div className="h-full rounded-2xl border border-border p-7">
+                <div className="card-hover h-full rounded-2xl border border-border p-7">
                   <h3 className="text-lg font-semibold">{t.n}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{t.d}</p>
                 </div>
