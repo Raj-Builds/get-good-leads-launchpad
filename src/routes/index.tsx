@@ -10,6 +10,7 @@ import {
   Target,
 } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
+import { CountUp } from "@/components/site/CountUp";
 import { CTASection } from "@/components/site/CTASection";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/components/site/contact-info";
 
@@ -99,7 +100,12 @@ function Home() {
   return (
     <>
       <section className="glow-grid relative overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 pt-20 pb-24 sm:px-6 lg:px-8 lg:pt-28 lg:pb-32">
+        <div aria-hidden="true" className="orb -top-24 -left-24 size-[26rem] opacity-60" />
+        <div
+          aria-hidden="true"
+          className="orb top-40 -right-32 size-[30rem] opacity-40 [animation-delay:-6s]"
+        />
+        <div className="relative mx-auto max-w-7xl px-4 pt-20 pb-24 sm:px-6 lg:px-8 lg:pt-28 lg:pb-32">
           <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
               <Reveal>
@@ -147,7 +153,7 @@ function Home() {
                   ].map(([k, v]) => (
                     <div key={v}>
                       <dt className="font-display text-2xl font-bold text-primary sm:text-3xl">
-                        {k}
+                        <CountUp value={k} />
                       </dt>
                       <dd className="mt-1 text-xs text-muted-foreground">{v}</dd>
                     </div>
@@ -160,7 +166,7 @@ function Home() {
             </div>
 
             <Reveal delay={200} className="lg:justify-self-end">
-              <div className="card-surface w-full rounded-3xl p-6 sm:p-8">
+              <div className="card-surface float-soft w-full rounded-3xl p-6 sm:p-8">
                 <p className="text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
                   Live pipeline snapshot
                 </p>
@@ -226,8 +232,8 @@ function Home() {
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal as="li" key={s.title} delay={i * 70}>
-              <div className="card-surface group h-full rounded-2xl p-7 transition-transform duration-300 hover:-translate-y-1.5">
-                <span className="inline-flex size-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
+              <div className="card-surface card-hover group h-full rounded-2xl p-7">
+                <span className="icon-chip inline-flex size-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
                   <s.icon className="size-5" aria-hidden="true" />
                 </span>
                 <h3 className="mt-5 text-lg font-semibold">{s.title}</h3>
@@ -254,7 +260,7 @@ function Home() {
           <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
               <Reveal as="li" key={s.n} delay={i * 80}>
-                <div className="h-full rounded-2xl border border-border p-7">
+                <div className="card-hover h-full rounded-2xl border border-border p-7">
                   <span className="font-display text-4xl font-bold text-primary/40">{s.n}</span>
                   <h3 className="mt-4 text-lg font-semibold">{s.t}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
@@ -275,10 +281,15 @@ function Home() {
         <ul className="mt-12 grid gap-5 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <Reveal as="li" key={t.name} delay={i * 80}>
-              <figure className="card-surface h-full rounded-2xl p-7">
+              <figure className="card-surface card-hover group h-full rounded-2xl p-7">
                 <div className="flex gap-1 text-primary" aria-label="5 out of 5 stars">
                   {[...Array(5)].map((_, k) => (
-                    <Star key={k} className="size-4 fill-current" aria-hidden="true" />
+                    <Star
+                      key={k}
+                      className="size-4 fill-current transition-transform duration-300 group-hover:scale-110"
+                      style={{ transitionDelay: `${k * 45}ms` }}
+                      aria-hidden="true"
+                    />
                   ))}
                 </div>
                 <blockquote className="mt-5 text-sm leading-relaxed text-foreground">

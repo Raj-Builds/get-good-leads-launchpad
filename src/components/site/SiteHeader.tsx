@@ -28,7 +28,9 @@ export function SiteHeader() {
     <header
       className={cn(
         "sticky top-0 z-50 w-full transition-colors duration-300",
-        scrolled ? "border-b border-border bg-background/85 backdrop-blur-xl" : "bg-transparent",
+        scrolled
+          ? "border-b border-border bg-background/85 shadow-[0_8px_30px_-24px_rgba(0,0,0,0.9)] backdrop-blur-xl"
+          : "border-b border-transparent bg-transparent",
       )}
     >
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8 lg:px-8 lg:py-4">
@@ -44,7 +46,7 @@ export function SiteHeader() {
                 to={l.to}
                 activeOptions={{ exact: l.to === "/" }}
                 activeProps={{ className: "text-foreground bg-secondary" }}
-                className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                className="nav-underline rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               >
                 {l.label}
               </Link>
@@ -61,7 +63,7 @@ export function SiteHeader() {
 
           <Link
             to="/contact"
-            className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.04] sm:inline-flex"
+            className="cta-glow hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground sm:inline-flex"
           >
             Get free audit
           </Link>

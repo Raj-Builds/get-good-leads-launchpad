@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { TrendingUp } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
+import { CountUp } from "@/components/site/CountUp";
 import { CTASection } from "@/components/site/CTASection";
 
 export const Route = createFileRoute("/results")({
@@ -84,7 +85,7 @@ function Results() {
         <ul className="mt-12 space-y-6">
           {cases.map((c, i) => (
             <Reveal as="li" key={c.title} delay={i * 90}>
-              <article className="card-surface rounded-3xl p-8 lg:p-10">
+              <article className="card-surface card-hover rounded-3xl p-8 lg:p-10">
                 <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr]">
                   <div>
                     <p className="text-xs font-semibold tracking-[0.2em] text-primary uppercase">
@@ -104,8 +105,10 @@ function Results() {
                   </div>
                   <ul className="grid grid-cols-3 gap-4 self-start lg:grid-cols-1">
                     {c.metrics.map(([k, v]) => (
-                      <li key={v} className="rounded-2xl border border-border p-4">
-                        <p className="font-display text-2xl font-bold text-primary">{k}</p>
+                      <li key={v} className="card-hover rounded-2xl border border-border p-4">
+                        <p className="font-display text-2xl font-bold text-primary">
+                          <CountUp value={k} />
+                        </p>
                         <p className="mt-1 text-xs text-muted-foreground">{v}</p>
                       </li>
                     ))}
@@ -135,7 +138,7 @@ function Results() {
               ["Days 61–90", "Scale winners, add a second channel, formalise follow-up."],
             ].map(([t, d], i) => (
               <Reveal as="li" key={t} delay={i * 80}>
-                <div className="h-full rounded-2xl border border-border p-7">
+                <div className="card-hover h-full rounded-2xl border border-border p-7">
                   <h3 className="font-semibold text-primary">{t}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{d}</p>
                 </div>

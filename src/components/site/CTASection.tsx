@@ -17,13 +17,14 @@ export function CTASection({
           aria-hidden="true"
           className="absolute inset-x-0 -top-24 mx-auto h-48 w-2/3 rounded-full bg-primary/30 blur-3xl"
         />
+        <div aria-hidden="true" className="orb -right-16 -bottom-24 size-72 opacity-50" />
         <div className="relative">
           <h2 className="text-3xl font-bold text-balance sm:text-4xl">{title}</h2>
           <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">{body}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link
               to="/contact"
-              className="rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.04]"
+              className="cta-glow rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground"
             >
               Get my free audit
             </Link>
