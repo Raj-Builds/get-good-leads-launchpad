@@ -107,7 +107,7 @@ function Results() {
                     {c.metrics.map(([k, v]) => (
                       <li key={v} className="card-hover rounded-2xl border border-border p-4">
                         <p className="font-display text-2xl font-bold text-primary">
-                          <CountUp value={k} />
+                          <CountUp value={String(k)} />
                         </p>
                         <p className="mt-1 text-xs text-muted-foreground">{v}</p>
                       </li>

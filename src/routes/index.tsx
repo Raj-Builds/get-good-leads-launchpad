@@ -153,7 +153,7 @@ function Home() {
                   ].map(([k, v]) => (
                     <div key={v}>
                       <dt className="font-display text-2xl font-bold text-primary sm:text-3xl">
-                        <CountUp value={k} />
+                        <CountUp value={String(k)} />
                       </dt>
                       <dd className="mt-1 text-xs text-muted-foreground">{v}</dd>
                     </div>
