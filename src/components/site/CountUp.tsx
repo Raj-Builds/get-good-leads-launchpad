@@ -19,6 +19,7 @@ export function CountUp({
   const [display, setDisplay] = useState<string>(value);
   const rafRef = useRef<number | null>(null);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const match = value.match(/^(\D*?)(\d+(?:[.,]\d+)?)(.*)$/s);
 
   useEffect(() => {
@@ -80,7 +81,7 @@ export function CountUp({
       stop();
       io.disconnect();
     };
-  }, [value, duration, match]);
+  }, [value, duration]);
 
   return (
     <span ref={ref} className={cn(className)}>
