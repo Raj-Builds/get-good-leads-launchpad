@@ -24,13 +24,13 @@ export function CTASection({
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link
               to="/contact"
-              className="cta-glow rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground"
+              className="cta-glow shimmer-hover rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.04]"
             >
               Get my free audit
             </Link>
             <a
               href={`tel:${PHONE_TEL}`}
-              className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-secondary"
+              className="shimmer-hover inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:border-primary/50 hover:bg-secondary"
             >
               <Phone className="size-4 shrink-0" aria-hidden="true" />
               {PHONE_DISPLAY}
@@ -39,9 +39,9 @@ export function CTASection({
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-secondary"
+              className="shimmer-hover inline-flex items-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:border-primary/50 hover:bg-secondary"
             >
-              <MessageCircle className="size-4 shrink-0" aria-hidden="true" />
+              <MessageCircle className="size-4 shrink-0 text-emerald-400" aria-hidden="true" />
               WhatsApp
             </a>
           </div>

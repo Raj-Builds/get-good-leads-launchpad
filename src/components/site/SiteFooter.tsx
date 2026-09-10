@@ -8,7 +8,7 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-[var(--color-ink)]">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:px-8 lg:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <Logo height={32} />
+          <Logo height={44} />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted-foreground">
             A performance marketing studio built for one outcome: qualified leads that turn into
             revenue. More leads. Better business.
@@ -53,8 +53,8 @@ export function SiteFooter() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 transition-colors hover:text-foreground"
               >
-                <MessageCircle className="size-4 shrink-0" aria-hidden="true" />
-                WhatsApp us
+                <MessageCircle className="size-4 shrink-0 text-emerald-400" aria-hidden="true" />
+                WhatsApp ({PHONE_DISPLAY})
               </a>
             </li>
             <li>

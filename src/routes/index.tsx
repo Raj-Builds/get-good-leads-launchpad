@@ -132,13 +132,13 @@ function Home() {
                 <div className="mt-9 flex flex-wrap gap-3">
                   <Link
                     to="/contact"
-                    className="rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.04]"
+                    className="cta-glow shimmer-hover rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-[1.04]"
                   >
                     Get a free growth audit
                   </Link>
                   <a
                     href={`tel:${PHONE_TEL}`}
-                    className="rounded-full border border-border px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-secondary"
+                    className="shimmer-hover rounded-full border border-border px-7 py-3.5 text-sm font-semibold transition-all duration-300 hover:border-primary/50 hover:bg-secondary"
                   >
                     Call {PHONE_DISPLAY}
                   </a>
@@ -151,11 +151,11 @@ function Home() {
                     ["-38%", "Cost per lead goal"],
                     ["14 days", "To first campaign"],
                   ].map(([k, v]) => (
-                    <div key={v}>
+                    <div key={v} className="group transition-transform duration-300 hover:-translate-y-1">
                       <dt className="font-display text-2xl font-bold text-primary sm:text-3xl">
                         <CountUp value={String(k)} />
                       </dt>
-                      <dd className="mt-1 text-xs text-muted-foreground">{v}</dd>
+                      <dd className="mt-1 text-xs text-muted-foreground group-hover:text-foreground transition-colors">{v}</dd>
                     </div>
                   ))}
                 </dl>
@@ -166,8 +166,8 @@ function Home() {
             </div>
 
             <Reveal delay={200} className="lg:justify-self-end">
-              <div className="card-surface float-soft w-full rounded-3xl p-6 sm:p-8">
-                <p className="text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+              <div className="card-surface float-soft shimmer-hover w-full rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_-20px_rgba(37,99,255,0.25)]">
+                <p className="status-beacon text-xs font-semibold tracking-[0.2em] text-muted-foreground uppercase">
                   Live pipeline snapshot
                 </p>
                 <p className="mt-1 text-[11px] text-muted-foreground">Sample data placeholder</p>
@@ -178,14 +178,14 @@ function Home() {
                     ["Local SEO", 47],
                     ["Referral funnel", 29],
                   ].map(([label, val]) => (
-                    <div key={label as string}>
+                    <div key={label as string} className="group">
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-muted-foreground">{label}</span>
-                        <span className="font-semibold">{val} leads</span>
+                        <span className="text-muted-foreground group-hover:text-foreground transition-colors">{label}</span>
+                        <span className="font-semibold text-primary">{val} leads</span>
                       </div>
                       <div className="mt-2 h-2 overflow-hidden rounded-full bg-secondary">
                         <div
-                          className="h-full rounded-full bg-primary transition-[width] duration-1000"
+                          className="h-full rounded-full bg-gradient-to-r from-primary to-[oklch(0.72_0.17_250)] transition-[width] duration-1000 group-hover:brightness-125"
                           style={{ width: `${val as number}%` }}
                         />
                       </div>
@@ -213,7 +213,7 @@ function Home() {
               ].map((x) => (
                 <span
                   key={x}
-                  className="font-display text-sm font-semibold tracking-[0.25em] text-muted-foreground uppercase"
+                  className="font-display text-sm font-semibold tracking-[0.25em] text-muted-foreground transition-colors duration-300 hover:text-primary uppercase"
                 >
                   {x}
                 </span>
@@ -232,11 +232,11 @@ function Home() {
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => (
             <Reveal as="li" key={s.title} delay={i * 70}>
-              <div className="card-surface card-hover group h-full rounded-2xl p-7">
-                <span className="icon-chip inline-flex size-11 items-center justify-center rounded-xl bg-primary/15 text-primary">
-                  <s.icon className="size-5" aria-hidden="true" />
+              <div className="card-surface card-hover shimmer-hover group h-full rounded-2xl p-7">
+                <span className="icon-chip inline-flex size-11 items-center justify-center rounded-xl bg-primary/15 text-primary shadow-inner">
+                  <s.icon className="size-5 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110" aria-hidden="true" />
                 </span>
-                <h3 className="mt-5 text-lg font-semibold">{s.title}</h3>
+                <h3 className="mt-5 text-lg font-semibold group-hover:text-primary transition-colors">{s.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
               </div>
             </Reveal>
@@ -245,7 +245,7 @@ function Home() {
         <Reveal delay={120}>
           <Link
             to="/services"
-            className="mt-10 inline-flex rounded-full border border-border px-6 py-3 text-sm font-semibold transition-colors hover:bg-secondary"
+            className="shimmer-hover mt-10 inline-flex rounded-full border border-border px-6 py-3 text-sm font-semibold transition-all duration-300 hover:border-primary/50 hover:bg-secondary hover:scale-[1.03]"
           >
             Explore all services
           </Link>
@@ -260,8 +260,8 @@ function Home() {
           <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {steps.map((s, i) => (
               <Reveal as="li" key={s.n} delay={i * 80}>
-                <div className="card-hover h-full rounded-2xl border border-border p-7">
-                  <span className="font-display text-4xl font-bold text-primary/40">{s.n}</span>
+                <div className="card-hover shimmer-hover group h-full rounded-2xl border border-border p-7">
+                  <span className="font-display text-4xl font-bold text-primary/40 transition-colors duration-300 group-hover:text-primary">{s.n}</span>
                   <h3 className="mt-4 text-lg font-semibold">{s.t}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.d}</p>
                 </div>
@@ -281,12 +281,12 @@ function Home() {
         <ul className="mt-12 grid gap-5 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <Reveal as="li" key={t.name} delay={i * 80}>
-              <figure className="card-surface card-hover group h-full rounded-2xl p-7">
+              <figure className="card-surface card-hover shimmer-hover group h-full rounded-2xl p-7">
                 <div className="flex gap-1 text-primary" aria-label="5 out of 5 stars">
                   {[...Array(5)].map((_, k) => (
                     <Star
                       key={k}
-                      className="size-4 fill-current transition-transform duration-300 group-hover:scale-110"
+                      className="size-4 fill-current transition-transform duration-300 group-hover:scale-125"
                       style={{ transitionDelay: `${k * 45}ms` }}
                       aria-hidden="true"
                     />

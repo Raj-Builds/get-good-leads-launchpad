@@ -35,7 +35,7 @@ export function SiteHeader() {
     >
       <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8 lg:px-8 lg:py-4">
         <div className="flex min-w-0 items-center">
-          <Logo height={34} />
+          <Logo height={48} />
         </div>
 
         <div className="flex items-center gap-2">
