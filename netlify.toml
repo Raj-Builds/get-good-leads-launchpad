@@ -2,15 +2,11 @@
   command = "npm run build"
   publish = ".output/public"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
 [[headers]]
   for = "/*"
   [headers.values]
     Content-Security-Policy = "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval' data: blob:; style-src * 'unsafe-inline' data: blob:; font-src * data: blob:; img-src * data: blob:; connect-src * wss: ws:;"
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
+
 
