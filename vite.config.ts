@@ -1,10 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import tsconfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function netlifySyncPlugin() {
   return {
@@ -30,7 +33,6 @@ function netlifySyncPlugin() {
           fs.mkdirSync(outputPublicDir, { recursive: true });
         }
 
-        // Copy dist/client items to dist and .output/public for complete cross-compatibility
         const items = fs.readdirSync(distClientDir);
         for (const item of items) {
           const src = path.join(distClientDir, item);
@@ -46,6 +48,11 @@ function netlifySyncPlugin() {
 }
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
   build: {
     outDir: "dist/client",
     emptyOutDir: true,
@@ -57,7 +64,6 @@ export default defineConfig({
     }),
     react(),
     tailwindcss(),
-    tsconfigPaths(),
     netlifySyncPlugin(),
   ],
 });
