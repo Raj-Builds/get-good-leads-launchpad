@@ -6,13 +6,13 @@ import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import fs from "node:fs";
 import path from "node:path";
 
-function netlifyMultiTargetPlugin() {
+function netlifySyncPlugin() {
   return {
-    name: "netlify-multi-target",
+    name: "netlify-sync",
     closeBundle() {
       try {
-        const distDir = path.resolve("dist");
         const distClientDir = path.resolve("dist/client");
+        const distDir = path.resolve("dist");
         const outputPublicDir = path.resolve(".output/public");
 
         const headersContent = `/*
@@ -23,33 +23,33 @@ function netlifyMultiTargetPlugin() {
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 `;
-        fs.writeFileSync(path.join(distDir, "_headers"), headersContent, "utf-8");
-        fs.writeFileSync(path.join(distDir, "_redirects"), "/*    /index.html   200\n", "utf-8");
+        fs.writeFileSync(path.join(distClientDir, "_headers"), headersContent, "utf-8");
+        fs.writeFileSync(path.join(distClientDir, "_redirects"), "/*    /index.html   200\n", "utf-8");
 
-        if (!fs.existsSync(distClientDir)) {
-          fs.mkdirSync(distClientDir, { recursive: true });
-        }
         if (!fs.existsSync(outputPublicDir)) {
           fs.mkdirSync(outputPublicDir, { recursive: true });
         }
 
-        const items = fs.readdirSync(distDir);
+        // Copy dist/client items to dist and .output/public for complete cross-compatibility
+        const items = fs.readdirSync(distClientDir);
         for (const item of items) {
-          if (item !== "client") {
-            const src = path.join(distDir, item);
-            fs.cpSync(src, path.join(distClientDir, item), { recursive: true, force: true });
-            fs.cpSync(src, path.join(outputPublicDir, item), { recursive: true, force: true });
-          }
+          const src = path.join(distClientDir, item);
+          fs.cpSync(src, path.join(distDir, item), { recursive: true, force: true });
+          fs.cpSync(src, path.join(outputPublicDir, item), { recursive: true, force: true });
         }
-        console.log("--> Built dist, dist/client, and .output/public successfully inside Vite closeBundle!");
+        console.log("--> Built dist/client natively and mirrored to dist & .output/public successfully!");
       } catch (e) {
-        console.error("Vite multi-target plugin warning:", e);
+        console.error("Netlify sync plugin warning:", e);
       }
     },
   };
 }
 
 export default defineConfig({
+  build: {
+    outDir: "dist/client",
+    emptyOutDir: true,
+  },
   plugins: [
     TanStackRouterVite({
       routesDirectory: "./src/routes",
@@ -58,6 +58,6 @@ export default defineConfig({
     react(),
     tailwindcss(),
     tsconfigPaths(),
-    netlifyMultiTargetPlugin(),
+    netlifySyncPlugin(),
   ],
 });
