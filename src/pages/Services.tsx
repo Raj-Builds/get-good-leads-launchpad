@@ -1,29 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
-
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — Paid Ads, SEO, Funnels & CRO | Get Good Leads" },
-      {
-        name: "description",
-        content:
-          "Lead generation services from Get Good Leads: Google & Meta ads, SEO, landing page funnels, conversion optimisation, creative and reporting.",
-      },
-      { property: "og:title", content: "Services | Get Good Leads" },
-      {
-        property: "og:description",
-        content: "Paid ads, SEO, funnels, CRO and reporting built around qualified leads.",
-      },
-      { property: "og:url", content: "/services" },
-    ],
-    links: [{ rel: "canonical", href: "/services" }],
-  }),
-  component: Services,
-});
 
 const detail = [
   {
@@ -90,7 +68,7 @@ const plans = [
   },
 ];
 
-function Services() {
+export default function ServicesPage() {
   return (
     <>
       <PageHero eyebrow="Services" title="Lead generation, engineered end to end">

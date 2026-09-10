@@ -1,32 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { EMAIL, PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "@/components/site/contact-info";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact Get Good Leads — Book Your Free Growth Audit" },
-      {
-        name: "description",
-        content:
-          "Talk to Get Good Leads about lead generation. Call +91 79855 91914, message us on WhatsApp, or request a free growth audit.",
-      },
-      { property: "og:title", content: "Contact | Get Good Leads" },
-      {
-        property: "og:description",
-        content: "Call, WhatsApp or request your free growth audit.",
-      },
-      { property: "og:url", content: "/contact" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
-  component: Contact,
-});
-
-function Contact() {
+export default function ContactPage() {
   const [sent, setSent] = useState(false);
 
   return (

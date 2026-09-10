@@ -1,29 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Compass, HeartHandshake, LineChart, ShieldCheck } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CTASection } from "@/components/site/CTASection";
-
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About Us — The Team Behind Get Good Leads" },
-      {
-        name: "description",
-        content:
-          "Get Good Leads is a lead generation team of strategists, media buyers and conversion specialists focused on revenue, not vanity metrics.",
-      },
-      { property: "og:title", content: "About Us | Get Good Leads" },
-      {
-        property: "og:description",
-        content: "Strategists, media buyers and CRO specialists obsessed with qualified leads.",
-      },
-      { property: "og:url", content: "/about" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
-  component: About,
-});
 
 const values = [
   {
@@ -55,7 +33,7 @@ const team = [
   { n: "Analytics", d: "Tracking, attribution and reporting." },
 ];
 
-function About() {
+export default function AboutPage() {
   return (
     <>
       <PageHero eyebrow="About Us" title="A small team that treats your budget like our own">

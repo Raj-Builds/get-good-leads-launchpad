@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import logoImg from "@/assets/logo.png";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +22,3 @@ export function Logo({ className, height = 46 }: { className?: string; height?: 
     </Link>
   );
 }
-
-
-

@@ -1,30 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { TrendingUp } from "lucide-react";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { CountUp } from "@/components/site/CountUp";
 import { CTASection } from "@/components/site/CTASection";
-
-export const Route = createFileRoute("/results")({
-  head: () => ({
-    meta: [
-      { title: "Results & Case Studies — Get Good Leads" },
-      {
-        name: "description",
-        content:
-          "Sample case studies and illustrative performance snapshots showing how Get Good Leads structures lead generation campaigns.",
-      },
-      { property: "og:title", content: "Results | Get Good Leads" },
-      {
-        property: "og:description",
-        content: "Illustrative sample case studies from our lead generation playbook.",
-      },
-      { property: "og:url", content: "/results" },
-    ],
-    links: [{ rel: "canonical", href: "/results" }],
-  }),
-  component: Results,
-});
 
 const cases = [
   {
@@ -62,7 +40,7 @@ const cases = [
   },
 ];
 
-function Results() {
+export default function ResultsPage() {
   return (
     <>
       <PageHero eyebrow="Results" title="What a well-built lead engine looks like">

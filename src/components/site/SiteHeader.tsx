@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { Logo } from "./Logo";
@@ -33,7 +33,7 @@ export function SiteHeader() {
           : "border-b border-transparent bg-transparent",
       )}
     >
-      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8 lg:px-8 lg:py-4">
+      <div className="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6 lg:px-8 lg:py-4">
         <div className="flex min-w-0 items-center">
           <Logo height={48} />
         </div>
@@ -41,15 +41,19 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
             {links.map((l) => (
-              <Link
+              <NavLink
                 key={l.to}
                 to={l.to}
-                activeOptions={{ exact: l.to === "/" }}
-                activeProps={{ className: "text-foreground bg-secondary" }}
-                className="nav-underline rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                end={l.to === "/"}
+                className={({ isActive }) =>
+                  cn(
+                    "nav-underline rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-secondary hover:text-foreground",
+                    isActive ? "text-foreground bg-secondary" : "text-muted-foreground"
+                  )
+                }
               >
                 {l.label}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 
@@ -92,15 +96,19 @@ export function SiteHeader() {
           <ul className="flex flex-col gap-1">
             {links.map((l) => (
               <li key={l.to}>
-                <Link
+                <NavLink
                   to={l.to}
+                  end={l.to === "/"}
                   onClick={() => setOpen(false)}
-                  activeOptions={{ exact: l.to === "/" }}
-                  activeProps={{ className: "bg-secondary text-foreground" }}
-                  className="block rounded-xl px-4 py-3 text-base font-medium text-muted-foreground"
+                  className={({ isActive }) =>
+                    cn(
+                      "block rounded-xl px-4 py-3 text-base font-medium",
+                      isActive ? "bg-secondary text-foreground" : "text-muted-foreground"
+                    )
+                  }
                 >
                   {l.label}
-                </Link>
+                </NavLink>
               </li>
             ))}
             <li className="mt-2 flex gap-2">

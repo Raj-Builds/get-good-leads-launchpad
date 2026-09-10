@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { MessageCircle, Phone } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { PHONE_DISPLAY, PHONE_TEL, WHATSAPP_URL } from "./contact-info";

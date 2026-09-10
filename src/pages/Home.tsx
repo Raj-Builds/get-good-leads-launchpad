@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import {
   BarChart3,
   Filter,
@@ -13,27 +13,6 @@ import { Reveal } from "@/components/site/Reveal";
 import { CountUp } from "@/components/site/CountUp";
 import { CTASection } from "@/components/site/CTASection";
 import { PHONE_DISPLAY, PHONE_TEL } from "@/components/site/contact-info";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Get Good Leads — Lead Generation Agency | More Leads. Better Business." },
-      {
-        name: "description",
-        content:
-          "We build predictable lead engines with paid ads, SEO, landing pages and CRO — so your sales team talks to buyers, not browsers.",
-      },
-      { property: "og:title", content: "Get Good Leads — More Leads. Better Business." },
-      {
-        property: "og:description",
-        content: "Performance marketing that delivers qualified, sales-ready leads.",
-      },
-      { property: "og:url", content: "/" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-  }),
-  component: Home,
-});
 
 const services = [
   {
@@ -96,7 +75,7 @@ const testimonials = [
   },
 ];
 
-function Home() {
+export default function HomePage() {
   return (
     <>
       <section className="glow-grid relative overflow-hidden">
