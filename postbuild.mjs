@@ -22,6 +22,7 @@ const htmlContent = `<!DOCTYPE html>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval' data: blob:; style-src * 'unsafe-inline' data: blob:; font-src * data: blob:; img-src * data: blob:; connect-src * wss: ws:;" />
     <title>Get Good Leads — More Leads. Better Business.</title>
     <meta name="description" content="Get Good Leads is a performance marketing agency generating qualified, sales-ready leads through paid ads, SEO, funnels and CRO." />
     <link rel="icon" href="/favicon.png" type="image/png" />
@@ -38,4 +39,15 @@ const htmlContent = `<!DOCTYPE html>
 `;
 
 fs.writeFileSync(path.join(publicDir, "index.html"), htmlContent, "utf-8");
-console.log("Successfully generated .output/public/index.html for deployment!");
+
+const rootPublic = path.resolve("public");
+["_headers", "_redirects"].forEach((file) => {
+  const src = path.join(rootPublic, file);
+  const dest = path.join(publicDir, file);
+  if (fs.existsSync(src)) {
+    fs.copyFileSync(src, dest);
+  }
+});
+
+console.log("Successfully generated .output/public/index.html and security headers for deployment!");
+
