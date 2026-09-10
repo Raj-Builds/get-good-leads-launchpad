@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const distDir = path.resolve("dist");
+const outputPublicDir = path.resolve(".output/public");
 
 if (fs.existsSync(distDir)) {
   const headersContent = `/*
@@ -16,6 +17,9 @@ if (fs.existsSync(distDir)) {
 
   const redirectsContent = "/*    /index.html   200\n";
   fs.writeFileSync(path.join(distDir, "_redirects"), redirectsContent, "utf-8");
+
+  // Recursively copy dist to .output/public so any publish directory setting works 100%
+  fs.cpSync(distDir, outputPublicDir, { recursive: true });
 }
 
-console.log("Successfully prepared dist directory (_headers & _redirects) for Netlify deployment!");
+console.log("Successfully prepared dist & .output/public directories for Netlify deployment!");
