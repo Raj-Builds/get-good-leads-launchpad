@@ -1,53 +1,28 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const publicDir = path.resolve(".output/public");
-const assetsDir = path.join(publicDir, "assets");
+const targetDir = path.resolve(".output/public");
 
-if (!fs.existsSync(publicDir)) {
-  fs.mkdirSync(publicDir, { recursive: true });
-}
+if (fs.existsSync(targetDir)) {
+  const headersContent = `/*
+  Content-Security-Policy: default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval' data: blob:; style-src * 'unsafe-inline' data: blob:; font-src * data: blob:; img-src * data: blob:; connect-src * wss: ws:;
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
 
-let cssFile = "";
-let jsFile = "";
-
-if (fs.existsSync(assetsDir)) {
-  const files = fs.readdirSync(assetsDir);
-  cssFile = files.find((f) => f.endsWith(".css")) || "";
-  jsFile = files.find((f) => f.startsWith("index-") && f.endsWith(".js")) || files.find((f) => f.endsWith(".js")) || "";
-}
-
-const htmlContent = `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src * 'unsafe-inline' 'unsafe-eval' data: blob:; style-src * 'unsafe-inline' data: blob:; font-src * data: blob:; img-src * data: blob:; connect-src * wss: ws:;" />
-    <title>Get Good Leads — More Leads. Better Business.</title>
-    <meta name="description" content="Get Good Leads is a performance marketing agency generating qualified, sales-ready leads through paid ads, SEO, funnels and CRO." />
-    <link rel="icon" href="/favicon.png" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" />
-    ${cssFile ? `<link rel="stylesheet" href="/assets/${cssFile}" />` : ""}
-  </head>
-  <body>
-    <div id="root"></div>
-    ${jsFile ? `<script type="module" src="/assets/${jsFile}"></script>` : ""}
-  </body>
-</html>
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
 `;
+  fs.writeFileSync(path.join(targetDir, "_headers"), headersContent, "utf-8");
 
-fs.writeFileSync(path.join(publicDir, "index.html"), htmlContent, "utf-8");
-
-const rootPublic = path.resolve("public");
-["_headers", "_redirects"].forEach((file) => {
-  const src = path.join(rootPublic, file);
-  const dest = path.join(publicDir, file);
-  if (fs.existsSync(src)) {
-    fs.copyFileSync(src, dest);
+  // Remove any conflicting static index.html or _redirects that bypass Nitro SSR functions
+  const staticIndex = path.join(targetDir, "index.html");
+  if (fs.existsSync(staticIndex)) {
+    fs.unlinkSync(staticIndex);
   }
-});
+  const staticRedirects = path.join(targetDir, "_redirects");
+  if (fs.existsSync(staticRedirects)) {
+    fs.unlinkSync(staticRedirects);
+  }
+}
 
-console.log("Successfully generated .output/public/index.html and security headers for deployment!");
-
+console.log("Successfully prepared .output/public for Nitro Netlify SSR deployment!");
